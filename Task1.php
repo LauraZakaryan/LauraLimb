@@ -15,14 +15,13 @@ if (isset($_POST['submit']) && isset($_POST['fname']) && isset($_POST['lname']) 
     $age = $_POST['age'];
     $aboutme = $_POST['aboutme'];
 
-    if($_FILES['image']['error'] === UPLOAD_ERR_OK){
+    if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $imageFileName = $_FILES['image']['name'];
         $imageTmpName = $_FILES['image']['tmp_name'];
         $imagePath = 'images/' . $imageFileName;
 
         move_uploaded_file($imageTmpName, $imagePath);
-    }
-    else{
+    } else {
         echo "Error uploading image.";
     }
 
@@ -105,6 +104,7 @@ drawForm()
         echo '<td>' . $entry['age'] . '</td>';
         echo '<td>' . $entry['aboutme'] . '</td>';
         echo '<td><img src="' . $entry['image'] . '" width="100" height="100"></td>'; //Display the image
+        echo '<td><a href="edit_user.php?id=' . $i . '">Edit</a></td>';
         echo '</tr>';
     }
     ?>
