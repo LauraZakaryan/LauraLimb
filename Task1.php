@@ -90,12 +90,12 @@ class UserManagement
                 $entry = $_SESSION['user_data'][$i];
                 ?>
                 <tr>
-                    <td><?php echo($i + 1); ?></td>
-                    <td><?php echo $entry['fname']; ?></td>
-                    <td><?php echo $entry['lname']; ?></td>
-                    <td><?php echo $entry['birthdate']; ?></td>
-                    <td><?php echo $entry['age']; ?></td>
-                    <td><?php echo $entry['aboutme']; ?></td>
+                    <td><?= ($i + 1); ?></td>
+                    <td><?= $entry['fname']; ?></td>
+                    <td><?= $entry['lname']; ?></td>
+                    <td><?= $entry['birthdate']; ?></td>
+                    <td><?= $entry['age']; ?></td>
+                    <td><?= $entry['aboutme']; ?></td>
                     <td><img src="' . $entry['image'] . '" width="100" height="100"></td>
                     <td><a href="edit_user.php?id=' . $i . '">Edit</a></td>
                 </tr>
