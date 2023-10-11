@@ -88,17 +88,18 @@ class UserManagement
             <?php
             for ($i = $startIndex; $i < $endIndex; $i++) {
                 $entry = $_SESSION['user_data'][$i];
-                echo '<tr>';
-                echo '<td>' . ($i + 1) . '</td>';
-                echo '<td>' . $entry['fname'] . '</td>';
-                echo '<td>' . $entry['lname'] . '</td>';
-                echo '<td>' . $entry['birthdate'] . '</td>';
-                echo '<td>' . $entry['age'] . '</td>';
-                echo '<td>' . $entry['aboutme'] . '</td>';
-                echo '<td><img src="' . $entry['image'] . '" width="100" height="100"></td>'; //Display the image
-                echo '<td><a href="edit_user.php?id=' . $i . '">Edit</a></td>';
-                echo '</tr>';
-            } ?>
+                ?>
+                <tr>
+                    <td><?php echo($i + 1); ?></td>
+                    <td><?php echo $entry['fname']; ?></td>
+                    <td><?php echo $entry['lname']; ?></td>
+                    <td><?php echo $entry['birthdate']; ?></td>
+                    <td><?php echo $entry['age']; ?></td>
+                    <td><?php echo $entry['aboutme']; ?></td>
+                    <td><img src="' . $entry['image'] . '" width="100" height="100"></td>
+                    <td><a href="edit_user.php?id=' . $i . '">Edit</a></td>
+                </tr>
+            <?php } ?>
 
         </table>
         <?php
