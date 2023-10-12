@@ -7,6 +7,7 @@ class UserManagement
     public function __construct()
     {
         session_start();
+
         if (!isset($_SESSION['user_data'])) {
             $_SESSION['user_data'] = [];
         }
@@ -96,7 +97,7 @@ class UserManagement
                     <td><?= $entry['birthdate']; ?></td>
                     <td><?= $entry['age']; ?></td>
                     <td><?= $entry['aboutme']; ?></td>
-                    <td><img src="' . $entry['image'] . '" width="100" height="100"></td>
+                    <td><img src="<?= $entry['image']; ?>" width="100" height="100"></td>
                     <td><a href="edit_user.php?id=' . $i . '">Edit</a></td>
                 </tr>
             <?php } ?>
@@ -115,46 +116,48 @@ class UserManagement
         for ($page = 1; $page <= $totalPages; $page++) {
             if ($page == $currentPage) {
                 ?>
-                <span>$page</span>
+                <span><?= $page; ?></span>
                 <?php
             } else {
                 ?>
-                <a href=\"?page=$page\">$page</a>
+                <a href="?page=<?= $page; ?>"><?= $page; ?></a>
                 <?php
             }
         }
+    }
 
+    public function processForm()
+    {
+        if (isset($_POST['submit']) && isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['birthdate'])
+            && isset($_POST['age']) && isset($_POST['aboutme']) && isset($_FILES['image'])) {
+            $fname = $_POST['fname'];
+            $lname = $_POST['lname'];
+            $birthdate = $_POST['birthdate'];
+            $age = $_POST['age'];
+            $aboutme = $_POST['aboutme'];
+
+            if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                $imageFileName = $_FILES['image']['name'];
+                $imageTmpName = $_FILES['image']['tmp_name'];
+                $imagePath = 'images/' . $imageFileName;
+
+                move_uploaded_file($imageTmpName, $imagePath);
+
+                $this->addUser($fname, $lname, $birthdate, $age, $aboutme, $imagePath);
+
+            } else {
+                echo "Error uploading image.";
+            }
+        }
     }
 
 }
 
 $userManager = new UserManagement();
-
-if (isset($_POST['submit']) && isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['birthdate'])
-    && isset($_POST['age']) && isset($_POST['aboutme']) && isset($_FILES['image'])) {
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $birthdate = $_POST['birthdate'];
-    $age = $_POST['age'];
-    $aboutme = $_POST['aboutme'];
-
-    if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
-        $imageFileName = $_FILES['image']['name'];
-        $imageTmpName = $_FILES['image']['tmp_name'];
-        $imagePath = 'images/' . $imageFileName;
-
-        move_uploaded_file($imageTmpName, $imagePath);
-
-    } else {
-        echo "Error uploading image.";
-    }
-
-    $userManager->addUser($fname, $lname, $birthdate, $age, $aboutme, $imagePath);
-}
-
 $userManager->drawForm();
 $userEntries = $userManager->getUserData();
 $userManager->drawUserTable($userEntries);
 $userManager->drawPaginationLinks();
+$userManager->processForm();
 
 ?>
