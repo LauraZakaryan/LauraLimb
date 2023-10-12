@@ -98,7 +98,7 @@ class UserManagement
                     <td><?= $entry['age']; ?></td>
                     <td><?= $entry['aboutme']; ?></td>
                     <td><img src="<?= $entry['image']; ?>" width="100" height="100"></td>
-                    <td><a href="edit_user.php?id=' . $i . '">Edit</a></td>
+                    <td><a href="edit_user.php?id=<?= $i ?>">Edit</a></td>
                 </tr>
             <?php } ?>
 
@@ -114,15 +114,8 @@ class UserManagement
         $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 
         for ($page = 1; $page <= $totalPages; $page++) {
-            if ($page == $currentPage) {
-                ?>
-                <span><?= $page; ?></span>
-                <?php
-            } else {
-                ?>
-                <a href="?page=<?= $page; ?>"><?= $page; ?></a>
-                <?php
-            }
+            $number = ($page == $currentPage) ? "<span>$page</span>" : "<a href=\"?page=$page\">$page</a> ";
+            echo $number;
         }
     }
 
