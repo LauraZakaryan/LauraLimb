@@ -1,13 +1,3 @@
-<?php
-$itemsPerPage = 3;
-$totalEntries = count($_SESSION['user_data']);
-$totalPages = ceil($totalEntries / $itemsPerPage);
-$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-
-$startIndex = ($currentPage - 1) * $itemsPerPage;
-$endIndex = min($startIndex + $itemsPerPage, $totalEntries);
-?>
-
 <style>
     table, th, td {
         border: 1px solid black;
@@ -45,17 +35,9 @@ $endIndex = min($startIndex + $itemsPerPage, $totalEntries);
 </table>
 
 <?php
-function drawPaginationLinks()
-{
-    $itemsPerPage = 3;
-    $totalEntries = count($_SESSION['user_data']);
-    $totalPages = ceil($totalEntries / $itemsPerPage);
-    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-
-    for ($page = 1; $page <= $totalPages; $page++) {
-        $number = ($page == $currentPage) ? "<span>$page</span>" : "<a href=\"?page=$page\">$page</a> ";
-        echo $number;
-    }
+//Pagination
+for ($page = 1; $page <= $totalPages; $page++) {
+    $number = ($page == $currentPage) ? "<span>$page</span>" : "<a href=\"?page=$page\">$page</a> ";
+    echo $number;
 }
-drawPaginationLinks();
 ?>

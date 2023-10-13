@@ -14,6 +14,10 @@ class UserManagement
 
         $this->data = $_SESSION['user_data'];
     }
+    public function drawForm()
+    {
+        include 'Templates/Form.php';
+    }
 
     public function addUser($fname, $lname, $birthdate, $age, $aboutme, $imagePath)
     {
@@ -36,11 +40,6 @@ class UserManagement
         }
     }
 
-    public function drawForm()
-    {
-        include('C:\wamp64\www\tasks\LauraLimb\Templates\Form.php');
-    }
-
     public function getUserData()
     {
         return $this->data;
@@ -48,7 +47,17 @@ class UserManagement
 
     public function drawUserTable()
     {
-        include('C:\wamp64\www\tasks\LauraLimb\Templates\User_Table.php');
+        $itemsPerPage = 3;
+        $totalEntries = count($_SESSION['user_data']);
+        $totalPages = ceil($totalEntries / $itemsPerPage);
+        $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+        $startIndex = ($currentPage - 1) * $itemsPerPage;
+        $endIndex = min($startIndex + $itemsPerPage, $totalEntries);
+        include 'Templates/User_Table.php';
+    ?>
+
+        <?php
     }
 
     public function processForm()
@@ -69,6 +78,9 @@ class UserManagement
                 move_uploaded_file($imageTmpName, $imagePath);
 
                 $this->addUser($fname, $lname, $birthdate, $age, $aboutme, $imagePath);
+
+                header("Location: ".$_SERVER['PHP_SELF']);
+                exit();
 
             } else {
                 echo "Error uploading image.";

@@ -9,4 +9,5 @@
     About me: <textarea name="aboutme" rows="5" cols="40"><?= $user['aboutme'] ?></textarea><br><br>
     Image: <input type="file" name="image"><br><br>
     <img src="<?= $user['image'] ?>" width="100" height="100" alt="User Image"><br><br>
-    <input type="submit" name="submit" value="Save Changes"></form>
+    <input type="submit" name="submit" value="Save Changes">
+</form>
