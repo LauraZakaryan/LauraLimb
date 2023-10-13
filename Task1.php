@@ -79,8 +79,7 @@ class UserManagement
 
                 $this->addUser($fname, $lname, $birthdate, $age, $aboutme, $imagePath);
 
-                header("Location: ".$_SERVER['PHP_SELF']);
-                exit();
+
 
             } else {
                 echo "Error uploading image.";
@@ -92,8 +91,9 @@ class UserManagement
 
 $userManager = new UserManagement();
 $userManager->drawForm();
+$userManager->processForm();
 $userEntries = $userManager->getUserData();
 $userManager->drawUserTable($userEntries);
-$userManager->processForm();
+
 
 ?>
