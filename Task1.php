@@ -58,7 +58,6 @@ class UserManagement
         $startIndex = ($currentPage - 1) * $itemsPerPage;
         $endIndex = min($startIndex + $itemsPerPage, $totalEntries);
         require 'Templates/User_Table.php';
-
     }
 
     public function processForm()
