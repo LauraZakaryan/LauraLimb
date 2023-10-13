@@ -18,7 +18,7 @@
 
     <?php
     for ($i = $startIndex; $i < $endIndex; $i++) {
-        $entry = $_SESSION['user_data'][$i];
+        $entry = $this->data[$i];
         ?>
         <tr>
             <td><?= ($i + 1); ?></td>

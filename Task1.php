@@ -14,9 +14,10 @@ class UserManagement
 
         $this->data = $_SESSION['user_data'];
     }
+
     public function drawForm()
     {
-        include 'Templates/Form.php';
+        require 'Templates/Form.php';
     }
 
     public function addUser($fname, $lname, $birthdate, $age, $aboutme, $imagePath)
@@ -35,6 +36,7 @@ class UserManagement
 
             $this->data[] = $entry;
             $_SESSION['user_data'][] = $entry;
+
         } else {
             echo "Invalid first name or last name. Only alphabetic characters and spaces are allowed.";
         }
@@ -47,17 +49,16 @@ class UserManagement
 
     public function drawUserTable()
     {
+        $userEntries = $this->getUserData();
         $itemsPerPage = 3;
-        $totalEntries = count($_SESSION['user_data']);
+        $totalEntries = count($this->data);
         $totalPages = ceil($totalEntries / $itemsPerPage);
         $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 
         $startIndex = ($currentPage - 1) * $itemsPerPage;
         $endIndex = min($startIndex + $itemsPerPage, $totalEntries);
-        include 'Templates/User_Table.php';
-    ?>
+        require 'Templates/User_Table.php';
 
-        <?php
     }
 
     public function processForm()
@@ -80,7 +81,6 @@ class UserManagement
                 $this->addUser($fname, $lname, $birthdate, $age, $aboutme, $imagePath);
 
 
-
             } else {
                 echo "Error uploading image.";
             }
@@ -92,8 +92,6 @@ class UserManagement
 $userManager = new UserManagement();
 $userManager->drawForm();
 $userManager->processForm();
-$userEntries = $userManager->getUserData();
-$userManager->drawUserTable($userEntries);
-
+$userManager->drawUserTable();
 
 ?>

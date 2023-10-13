@@ -1,4 +1,5 @@
 <?php
+
 class UserEditor
 {
     private $userData;
@@ -17,7 +18,7 @@ class UserEditor
         if (isset($this->userData[$userId])) {
             $user = $this->userData[$userId];
 
-            include 'Templates/Edit_Form.php';
+            require 'Templates/Edit_Form.php';
 
         } else {
             echo 'Invalid user ID.';
