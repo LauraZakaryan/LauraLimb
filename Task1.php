@@ -49,7 +49,7 @@ class UserManagement
 
     public function drawUserTable()
     {
-        $userEntries = $this->getUserData();
+        $this->getUserData();
         $itemsPerPage = 3;
         $totalEntries = count($this->data);
         $totalPages = ceil($totalEntries / $itemsPerPage);
