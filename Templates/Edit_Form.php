@@ -6,7 +6,7 @@
     E-mail: <input type="email"  name="email" value=<?= $user['email'] ?>><br><br>
     Date of birth: <input type="date" id="birthdate" name="birthdate"
                           value=<?= $user['birthdate'] ?>><br><br>
-    Age: <input type="number" id="age" name="age" min="1" max="1000" value=<?=  $user['age'] ?>><br><br>
+    Age: <input type="text"  name="age" value=<?=  $user['age'] ?>><br><br>
     About me: <textarea name="aboutme" rows="5" cols="40"><?= $user['aboutme'] ?></textarea><br><br>
     Image: <input type="file" name="image"><br><br>
     <img src="<?= $user['image'] ?>" width="100" height="100" alt="User Image"><br><br>
