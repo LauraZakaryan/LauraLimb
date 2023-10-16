@@ -32,6 +32,7 @@ class UserEditor
 
             $fname = $postData['fname'];
             $lname = $postData['lname'];
+            $email = $postData['email'];
             $birthdate = $postData['birthdate'];
             $age = $postData['age'];
             $aboutme = $postData['aboutme'];
@@ -46,6 +47,7 @@ class UserEditor
 
             $user['fname'] = $fname;
             $user['lname'] = $lname;
+            $user['email'] = $email;
             $user['birthdate'] = $birthdate;
             $user['age'] = $age;
             $user['aboutme'] = $aboutme;

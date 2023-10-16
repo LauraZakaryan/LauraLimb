@@ -20,7 +20,7 @@ class UserManagement
         require 'Templates/Form.php';
     }
 
-    public function addUser($fname, $lname, $birthdate, $age, $aboutme, $imagePath)
+    public function addUser($fname, $lname, $email, $birthdate, $age, $aboutme, $imagePath)
     {
         $namePattern = '/^[A-Za-z\s]+$/';
 
@@ -28,6 +28,7 @@ class UserManagement
             $entry = [
                 'fname' => $fname,
                 'lname' => $lname,
+                'email' => $email,
                 'birthdate' => $birthdate,
                 'age' => $age,
                 'aboutme' => $aboutme,
@@ -62,10 +63,11 @@ class UserManagement
 
     public function processForm()
     {
-        if (isset($_POST['submit']) && isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['birthdate'])
+        if (isset($_POST['submit']) && isset($_POST['fname']) && isset($_POST['email']) &&  isset($_POST['lname']) && isset($_POST['birthdate'])
             && isset($_POST['age']) && isset($_POST['aboutme']) && isset($_FILES['image'])) {
             $fname = $_POST['fname'];
             $lname = $_POST['lname'];
+            $email = $_POST['email'];
             $birthdate = $_POST['birthdate'];
             $age = $_POST['age'];
             $aboutme = $_POST['aboutme'];
@@ -77,7 +79,7 @@ class UserManagement
 
                 move_uploaded_file($imageTmpName, $imagePath);
 
-                $this->addUser($fname, $lname, $birthdate, $age, $aboutme, $imagePath);
+                $this->addUser($fname, $lname, $email, $birthdate, $age, $aboutme, $imagePath);
 
 
             } else {

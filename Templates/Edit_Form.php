@@ -3,6 +3,7 @@
 <form action="" method="post" enctype="multipart/form-data">
     First name: <input type="text" name="fname" value=<?= $user['fname'] ?>><br><br>
     Last name: <input type="text" name="lname" value=<?= $user['lname'] ?>><br><br>
+    E-mail: <input type="email"  name="email" value=<?= $user['email'] ?>><br><br>
     Date of birth: <input type="date" id="birthdate" name="birthdate"
                           value=<?= $user['birthdate'] ?>><br><br>
     Age: <input type="number" id="age" name="age" min="1" max="1000" value=<?=  $user['age'] ?>><br><br>

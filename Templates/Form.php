@@ -3,6 +3,7 @@
 <form action="" method="post" enctype="multipart/form-data">
     First name: <input type="text" name="fname"><br><br>
     Last name: <input type="text" name="lname"><br><br>
+    E-mail: <input type="email" name="email"><br><br>
     Date of birth: <input type="date" id="birthdate" name="birthdate"><br><br>
     Age: <input type="number" id="age" name="age" min="1" max="1000"><br><br>
     About me: <textarea name="aboutme" rows="5" cols="40"></textarea><br><br>

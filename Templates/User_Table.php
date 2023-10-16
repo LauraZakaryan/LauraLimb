@@ -9,6 +9,7 @@
         <th>User</th>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>E-mail</th>
         <th>Date of Birth</th>
         <th>Age</th>
         <th>About Me</th>
@@ -24,6 +25,7 @@
             <td><?= ($i + 1); ?></td>
             <td><?= $entry['fname']; ?></td>
             <td><?= $entry['lname']; ?></td>
+            <td><?= $entry['email']; ?></td>
             <td><?= $entry['birthdate']; ?></td>
             <td><?= $entry['age']; ?></td>
             <td><?= $entry['aboutme']; ?></td>
