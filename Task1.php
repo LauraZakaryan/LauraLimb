@@ -77,9 +77,13 @@ class UserManagement
                 if (preg_match($namePattern, $fname) && preg_match($namePattern, $lname)) {
                     if (preg_match($emailPattern, $email)) {
                         if (is_numeric($age)) {
-                            move_uploaded_file($imageTmpName, $imagePath);
+                            if (strtotime($birthdate) !== false) {
+                                move_uploaded_file($imageTmpName, $imagePath);
 
-                            $this->addUser($fname, $lname, $email, $birthdate, $age, $aboutme, $imagePath);
+                                $this->addUser($fname, $lname, $email, $birthdate, $age, $aboutme, $imagePath);
+                            } else {
+                                echo "Invalid birthdate. Please enter a valid date.";
+                            }
                         } else {
                             echo "Invalid age. Please enter a valid number for age.";
                         }
