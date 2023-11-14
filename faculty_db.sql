@@ -1,55 +1,75 @@
-# Comments.
-# 1. In case we are talking about integer primary column, then always name it -> `id`, instead of user_id, course_id, etc ... I am talking about certain table integer primary column.
-# 2. Some of the users does not have course or salary or group, etc ... . Think about other implementation to save connection between user and course or user and salaray or user and etc ...
-
-
 CREATE TABLE `users` (
-    `user_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
     `position` VARCHAR(255),
     `first_name` VARCHAR(255),
     `last_name` VARCHAR(255),
     `date_of_birth` DATE,
     `email` VARCHAR(255),
     `phone` VARCHAR(255),
-    `address` VARCHAR(255),
-    `course_id` INT,
-    `stream_id` INT,
-    `group_id` INT,
-    `salary_id` INT,
-    `mog_id` INT,
-    INDEX (`course_id`),
-    INDEX (`stream_id`),
-    INDEX (`group_id`),
-    INDEX (`salary_id`),
-    INDEX (`mog_id`)
+    `address` VARCHAR(255)
 ) ENGINE = INNODB;
 
 CREATE TABLE `courses` (
-    `course_id` INT PRIMARY KEY,
-    `course` VARCHAR(255),
-    FOREIGN KEY (`course_id`) REFERENCES `users`(`course_id`)
+    `id` INT PRIMARY KEY,
+    `course` VARCHAR(255)
 ) ENGINE = INNODB;
 
 CREATE TABLE `streams` (
-    `stream_id` INT PRIMARY KEY,
-    `stream` VARCHAR(255),
-    FOREIGN KEY (`stream_id`) REFERENCES `users`(`stream_id`)
+    `id` INT PRIMARY KEY,
+    `stream` VARCHAR(255)
 ) ENGINE = INNODB;
 
 CREATE TABLE `groups` (
-    `group_id` INT PRIMARY KEY,
-    `group` VARCHAR(255),
-    FOREIGN KEY (`group_id`) REFERENCES `users`(`group_id`)
+    `id` INT PRIMARY KEY,
+    `group` VARCHAR(255)
 ) ENGINE = INNODB;
 
 CREATE TABLE `salary` (
-    `salary_id` INT PRIMARY KEY,
-    `salary` INT,
-    FOREIGN KEY (`salary_id`) REFERENCES `users`(`salary_id`)
+    `id` INT PRIMARY KEY,
+    `salary` INT
 ) ENGINE = INNODB;
 
 CREATE TABLE `mog` (
-    `mog_id` INT PRIMARY KEY,
-    `mog` VARCHAR(255),
-    FOREIGN KEY (`mog_id`) REFERENCES `users`(`mog_id`)
+    `id` INT PRIMARY KEY,
+    `mog` VARCHAR(255)
+) ENGINE = INNODB;
+
+CREATE TABLE `user_courses` (
+    `id` INT,
+    `course_id` INT,
+    PRIMARY KEY (`id`, `course_id`),
+    FOREIGN KEY (`id`) REFERENCES `users`(`id`),
+    FOREIGN KEY (`course_id`) REFERENCES `courses`(`id`)
+) ENGINE = INNODB;
+
+CREATE TABLE `user_streams` (
+    `id` INT,
+    `stream_id` INT,
+    PRIMARY KEY (`id`, `stream_id`),
+    FOREIGN KEY (`id`) REFERENCES `users`(`id`),
+    FOREIGN KEY (`stream_id`) REFERENCES `streams`(`id`)
+) ENGINE = INNODB;
+
+CREATE TABLE `user_groups` (
+    `id` INT,
+    `group_id` INT,
+    PRIMARY KEY (`id`, `group_id`),
+    FOREIGN KEY (`id`) REFERENCES `users`(`id`),
+    FOREIGN KEY (`group_id`) REFERENCES `groups`(`id`)
+) ENGINE = INNODB;
+
+CREATE TABLE `user_salary` (
+    `id` INT,
+    `salary_id` INT,
+    PRIMARY KEY (`id`, `salary_id`),
+    FOREIGN KEY (`id`) REFERENCES `users`(`id`),
+    FOREIGN KEY (`salary_id`) REFERENCES `salary`(`id`)
+) ENGINE = INNODB;
+
+CREATE TABLE `user_mog` (
+    `id` INT,
+    `mog_id` INT,
+    PRIMARY KEY (`id`, `mog_id`),
+    FOREIGN KEY (`id`) REFERENCES `users`(`id`),
+    FOREIGN KEY (`mog_id`) REFERENCES `mog`(`id`)
 ) ENGINE = INNODB;
