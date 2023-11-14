@@ -1,3 +1,8 @@
+# Comments.
+# 1. In case we are talking about integer primary column, then always name it -> `id`, instead of user_id, course_id, etc ... I am talking about certain table integer primary column.
+# 2. Some of the users does not have course or salary or group, etc ... . Think about other implementation to save connection between user and course or user and salaray or user and etc ...
+
+
 CREATE TABLE `users` (
     `user_id` INT AUTO_INCREMENT PRIMARY KEY,
     `position` VARCHAR(255),
