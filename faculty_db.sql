@@ -79,14 +79,22 @@ CREATE TABLE `subjects` (
     `subject` VARCHAR(255)
 ) ENGINE = INNODB;
 
-CREATE TABLE `schedule` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE `user_subject` (
     `user_id` INT,
     `subject_id` INT,
-    `room_number` VARCHAR(255),
+    PRIMARY KEY (`user_id`,`subject_id`),
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+    FOREIGN KEY (`subject_id`) REFERENCES `subjects`(`id`)
+) ENGINE = INNODB; 
+
+CREATE TABLE `schedule` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `group_id` INT,
     `day_of_week` VARCHAR(255),
     `start_time` TIME,
     `end_time` TIME,
-    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+    `subject_id` INT,
+    `room_number` VARCHAR(255),
+    FOREIGN KEY (`group_id`) REFERENCES `groups`(`id`),
     FOREIGN KEY (`subject_id`) REFERENCES `subjects`(`id`)
 ) ENGINE = INNODB;
