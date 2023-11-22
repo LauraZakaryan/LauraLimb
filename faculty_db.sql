@@ -73,3 +73,20 @@ CREATE TABLE `user_mog` (
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
     FOREIGN KEY (`mog_id`) REFERENCES `mog`(`id`)
 ) ENGINE = INNODB;
+
+CREATE TABLE `subjects` (
+    `id` INT PRIMARY KEY,
+    `subject` VARCHAR(255)
+) ENGINE = INNODB;
+
+CREATE TABLE `schedule` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `user_id` INT,
+    `subject_id` INT,
+    `room_number` VARCHAR(255),
+    `day_of_week` VARCHAR(255),
+    `start_time` TIME,
+    `end_time` TIME,
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+    FOREIGN KEY (`subject_id`) REFERENCES `subjects`(`id`)
+) ENGINE = INNODB;
