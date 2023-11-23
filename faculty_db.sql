@@ -79,34 +79,33 @@ CREATE TABLE `subjects` (
     `subject` VARCHAR(255)
 ) ENGINE = INNODB;
 
-CREATE TABLE `user_subject` (
-    `user_id` INT,
-    `subject_id` INT,
-    PRIMARY KEY (`user_id`,`subject_id`),
-    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
-    FOREIGN KEY (`subject_id`) REFERENCES `subjects`(`id`)
-) ENGINE = INNODB; 
-
-CREATE TABLE `mode` (
+CREATE TABLE `class` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `day_of_week` VARCHAR(255),
     `start_time` TIME,
-    `end_time` TIME,
-    ՝break՝ TIME
+    `end_time` TIME
 ) ENGINE = INNODB;
 
-CREATE TABLE `subject_mode` (
-    `subject_id` INT,
-	 `mode_id`INT,
-	 FOREIGN KEY (`subject_id`) REFERENCES `subjects`(`id`),
-	 FOREIGN KEY (`mode_id`) REFERENCES `mode`(`id`),
-) ENGINE = INNODB;	 
+CREATE TABLE `semesters` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `semester_name` VARCHAR(255),
+    `start_date` DATE,
+    `end_date` DATE
+) ENGINE = INNODB;
 
 CREATE TABLE `schedule` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `class_id` INT,
     `group_id` INT,
-    `day_of_week` VARCHAR(255),
     `subject_id` INT,
+    `user_id` INT,
     `room_number` VARCHAR(255),
+    `semester_id` INT, 
+    FOREIGN KEY (`class_id`) REFERENCES `class`(`id`),
     FOREIGN KEY (`group_id`) REFERENCES `groups`(`id`),
-    FOREIGN KEY (`subject_id`) REFERENCES `subjects`(`id`)
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+    FOREIGN KEY (`subject_id`) REFERENCES `subjects`(`id`),
+    FOREIGN KEY (`semester_id`) REFERENCES `semesters`(`id`)
 ) ENGINE = INNODB;
+
+
