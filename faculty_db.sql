@@ -6,7 +6,8 @@ CREATE TABLE `users` (
     `date_of_birth` DATE,
     `email` VARCHAR(255),
     `phone` VARCHAR(255),
-    `address` VARCHAR(255)
+    `address` VARCHAR(255),
+    INDEX `idx_user`(`first_name`, `last_name`, `position`)
 ) ENGINE = INNODB;
 
 CREATE TABLE `courses` (
@@ -21,7 +22,8 @@ CREATE TABLE `streams` (
 
 CREATE TABLE `groups` (
     `id` INT PRIMARY KEY,
-    `group` VARCHAR(255)
+    `group` VARCHAR(255),
+    INDEX `idx_group`(`group`)
 ) ENGINE = INNODB;
 
 CREATE TABLE `salary` (
@@ -105,7 +107,7 @@ CREATE TABLE `schedule` (
     FOREIGN KEY (`group_id`) REFERENCES `groups`(`id`),
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
     FOREIGN KEY (`subject_id`) REFERENCES `subjects`(`id`),
-    FOREIGN KEY (`semester_id`) REFERENCES `semesters`(`id`)
+    FOREIGN KEY (`semester_id`) REFERENCES `semesters`(`id`),
+    UNIQUE INDEX (`semester_id`,`class_id`,`room_number`),
+    INDEX (`user_id`,`subject_id`,`group_id`)
 ) ENGINE = INNODB;
-
-
