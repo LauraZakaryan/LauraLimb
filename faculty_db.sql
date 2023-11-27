@@ -148,11 +148,7 @@ VALUES
    (1, '101'),
    (2, '102'),
    (3, '201'),
-   (4, '202'),
-   (5, '301'),
-   (6, '302'),
-   (7, '401'),
-   (8, '402');
+   (4, '202');
    
 # Inserting data into the `salary` table
 INSERT INTO `salary` (`id`, `amount`)
@@ -171,7 +167,9 @@ VALUES
    (2, '17,75'),
    (3, '19,5'),
    (4, '20'),
-   (5, '13,9');
+   (5, '13,9'),
+   (6, '15'),
+   (7, '16,5');
    
 # Inserting data into the `subjects` table
 INSERT INTO `subjects` (`id`, `name`)
@@ -213,6 +211,8 @@ VALUES
    (9,4),
    (10,1),
    (11,2);   
+   
+   
    
 # Inserting data into the `schedule` table
 # Schedule for the first semester, group 101
