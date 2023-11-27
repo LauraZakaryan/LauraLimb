@@ -126,8 +126,34 @@ VALUES
   ('student', 'Narine', 'Poghosyan', '2003-04-14', 'narine.poghosyan@gmail.com', '055454545','Isakov 18'),
   ('student', 'Zarine', 'Grigoryan', '2003-06-15', 'zarine,grigoryan@gmail,com', '077171777', 'Saryan 4'),
   ('student', 'Srbuhi', 'Khachatryan' , '2003-08-01', 'srbuhi.khachatryan@gmail.com', '093636393', 'Garegin Njdeh 8'),
-  ('lecturer', 'Hrant', 'Khachatryan', '1986-10-06', 'hrant.khachatryan@gmail.com', '094546444','Baghramyan 16');
-  
+  ('lecturer', 'Hrant', 'Khachatryan', '1986-10-06', 'hrant.khachatryan@gmail.com', '094546444','Baghramyan 16'),
+  ('student', 'Arusyak', 'Nakhshkaryan', '2003-06-23', 'arusyak.nakhshkaryan@gmail.com', '093556783', 'Komitas 23'),
+  ('student', 'Vardan', 'Petrosyan', '2001-03-12', 'vardan.petrosyan@gmail.com', '094648732', 'Komitas 12'),
+  ('student', 'Nune', 'Haroyan', '2003-11-05', 'nune.haroyan@gmail.com', '093645678', 'Baghramyan 3'),
+  ('student', 'Gor', 'Garanyan', '2003-04-25', 'gor.garanyan@gmail.com', '055464646', 'Saryan 12'),
+  ('student', 'Arzhanik', 'Zaqoyan', '2003-05-15', 'arzhanik.zaqoyan@gmail.com', '098989868', 'Avan 2'),
+  ('student', 'Anush', 'Khachatryan', '2003-02-22', 'anush.khachatryan@gmail.com', '093939393', 'Avan 7'),
+  ('student', 'Lyova', 'Azaryan', '2003-04-08', 'lyova.azaryan@gmail.com', '055657565', 'Isakov 5'),
+  ('student', 'Narek', 'Avoyan', '2003-12-28', 'narek.avoyan@gmail.com', '093657845', 'Isakov 10'),
+  ('lecturer', 'Karine', 'Galstyan, '1959-06-16','karine.galstyan@gmail.com', '093354675', 'Avan 25'),  
+  ('student', 'Saten', 'Ishkhanyan', '2003-08-15', 'saten.ishkhanyan@gmail.com', '094442434', 'Bangladesh 23'),
+  ('student', 'Ani', 'Avagyan', '2003-09-18', 'ani.avagyan@gmail.com', '055657565', 'Avan 16'),
+  ('student', 'Julya', 'Zilabyan','2003-01-15', 'julya.zilabyan@gmail.com', '093535363', 'Bangladesh 14'),
+  ('student', 'Arman', 'Petrosyan', '2003-05-24', 'arman.petrosyan@gmail.com', '055959595', 'Saryan 31'),
+  ('student', 'Lilith', 'Gabrielyan', '2003-07-27', 'lilith.gabrielyan@gmail.com', '094545454', 'Avan 1'),
+  ('student', 'Vika', 'Hovelyan', '2003-08-21', 'vika.hovelyan@gmail.com', '055857585', 'Zoravar Andranik 13'),
+  ('student', 'Harutyun', 'Maranjyan', '2003-07-17', 'harutyun.maranjyan@gmail.com', '098686868', 'Garegin Njdeh 12'),
+  ('student', 'Luiza', 'Tevanyan', '2003-05-23', 'luiza.tevanyan@gmail.com', '077878787', 'Monument 23'),
+  ('lecturer', 'Sofik', 'Toroyan', '1990-09-23', 'sofik.toroyan@gmail.com', '055453545', 'Saryan 17'),
+  ('student', 'Nana', 'Virabyan', '2002-02-12', 'nana.virabyan@gmail.com', '098786878', 'Abovyan 12'),
+  ('student', 'Arsen', 'Safaryan', '2001-05-25', 'arsen.safaryan@gmail.com', '055453545', 'Avan 28'),
+  ('lecturer', 'Kamo', 'Harutyunyan', '1950-08-29', 'kamo.harutyunyan@gmail.com', '055253545', 'Bangladesh 33'),
+  ('lecturer', 'Sahak', 'Sahakyan', '1950-03-23', 'sahak.sahakyan@gmail.com', '094444494', 'Saryan 5'),
+  ('lecturer', 'Zohrab', 'Hovhannisyan', '1949-06-27', 'zohrab.hovhannisyan@gmail.com', '055253525', 'Zoravar Andranik 14'),
+  ('lecturer', 'Armen', 'Andreasyan', ''1955-09-16', 'armen.andreasyan@gmail.com', '093435363', 'Abovyan 3'),
+  ('lecturer', 'Zaven', 'Nazaryan', '1945-07-09', 'zaven.nazaryan@gmail.com', '093332333', 'Nar-Dos 24')
+  ('lecturer', 'Varujan', 'Gabrielyan', '1980-04-14', 'varuj.gabrielyan@gmail.com', '094244454', 'Nar-Dos 20');
+	
 # Inserting data into the `courses` table
 INSERT INTO `courses` (`id`,`name`)
 VALUES 
@@ -158,7 +184,7 @@ VALUES
    (3, 200000),
    (4, 250000),
    (5, 300000),
-	(6, 350000);
+   (6, 350000);
    
 # Inserting data into the `mog` table
 INSERT INTO `mog` (`id`, `name`)
@@ -185,8 +211,17 @@ VALUES
    (9, 'Operating systems'),
    (10, 'Theory of algorithms'),
    (11, 'Graph theory'),
-   (12, 'Web programming');  
-   
+   (12, 'Web programming'),
+   (13, 'Assembler'),
+   (14, 'Complex analysis'),
+   (15, 'Analitic geometry and algebra')
+   (16, 'Theory of translations'),
+   (17, 'Functional analysis'),
+   (18, 'Differential equations'),
+   (19, 'Probability theory'),
+   (20, 'Physics'),
+   (21, 'Computer networks');
+
 # Inserting data into the `class` table
 INSERT INTO `class` (`start_time`, `end_time`)
 VALUES 
@@ -211,8 +246,6 @@ VALUES
    (9,4),
    (10,1),
    (11,2);   
-   
-   
    
 # Inserting data into the `schedule` table
 # Schedule for the first semester, group 101
