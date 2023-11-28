@@ -258,8 +258,8 @@ VALUES
     (37,5),
     (38,1),
     (38,2),
-	 (38,3),
-	 (38,4);
+    (38,3),
+    (38,4);
     
 	
 # Inserting data into the `user_salary` table
@@ -329,7 +329,7 @@ VALUES
     ('Thursday', 3, 1, 15, 38, 'Room 108', 1),
     ('Thursday', 4, 1, 2, 4, 'Room 204', 1),
     ('Friday', 1, 1, 1, 3, 'Room 114', 1),
-	 ('Friday', 2, 1, 3, 36, 'Room 216', 1);
+    ('Friday', 2, 1, 3, 36, 'Room 216', 1);
 
 # Schedule for the first semester, group 102
 INSERT INTO `schedule` (
@@ -351,7 +351,7 @@ VALUES
     ('Thursday', 1, 2, 3, 36, 'Room 219', 1),
     ('Thursday', 2, 2, 1, 35, 'Room 101', 1),
     ('Friday', 1, 2, 15, 38, 'Room 108', 1),
-	 ('Friday', 2, 2, 2, 12, 'Room 104', 1);
+    ('Friday', 2, 2, 2, 12, 'Room 104', 1);
 
 # Schedule for the first semester, group 201
 INSERT INTO `schedule` (
@@ -375,7 +375,7 @@ VALUES
     ('Thursday', 1, 3, 13, 37, 'Room 220', 1),
     ('Thursday', 2, 3, 11, 4, 'Room 115', 1),
     ('Friday', 1, 3, 4, 7, 'Room 219', 1),
-	 ('Friday', 2, 3, 7, 38, 'Room 214', 1);
+    ('Friday', 2, 3, 7, 38, 'Room 214', 1);
 
 # Schedule for the first semester, group 202
 INSERT INTO `schedule` (
@@ -399,7 +399,7 @@ VALUES
     ('Thursday', 2, 4, 4, 36, 'Room 216', 1),
     ('Thursday', 3, 4, 10, 12, 'Room 114', 1),
     ('Friday', 1, 4, 13, 37, 'Room 220', 1),
-	 ('Friday', 2, 4, 5, 7, 'Room 220', 1);
+    ('Friday', 2, 4, 5, 7, 'Room 220', 1);
     
 # Schedule for the first semester, group 301
 INSERT INTO `schedule` (
@@ -422,7 +422,7 @@ VALUES
     ('Thursday', 2, 5, 9, 37, 'Room 220', 1),
     ('Thursday', 3, 5, 17, 3, 'Room 104', 1),
     ('Friday', 1, 5, 12, 21, 'Room 216', 1),
-	 ('Friday', 2, 5, 17, 3, 'Room 209', 1);
+    ('Friday', 2, 5, 17, 3, 'Room 209', 1);
 
 # Schedule for the first semester, group 401
 INSERT INTO `schedule` (
@@ -438,4 +438,4 @@ VALUES
     ('Monday', 1, 6, 19, 4, 'Room 115', 1),
     ('Wednesday', 2, 6, 20, 30, 'Room 104', 1),
     ('Friday', 1, 6, 21, 36, 'Room 318', 1),
-	 ('Friday', 2, 6, 19, 4, 'Room 114', 1);
+    ('Friday', 2, 6, 19, 4, 'Room 114', 1);
