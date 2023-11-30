@@ -1,7 +1,7 @@
 # Select all the users who's names ( f name or l name ) contains letter "a"
 SELECT `first_name`, `last_name`
 FROM `users`
-WHERE `first_name` OR `last_name` LIKE '%a%';
+WHERE `first_name`  LIKE '%a%' OR `last_name` LIKE '%a%';;
 
 # Select all the groups which studies "English"
 SELECT `groups`.`name`, `schedule`.`group_id`
