@@ -5,8 +5,8 @@ WHERE `first_name`  LIKE '%a%' OR `last_name` LIKE '%a%';
 
 # Select all the groups which studies "English"
 SELECT 
-     `groups`.`name`, 
-	  `groups`.`id`
+     `groups`.`id`, 
+	  `groups`.`name`
 FROM `schedule`
 INNER JOIN `groups` ON `groups`.id =`schedule`.group_id
 INNER JOIN `subjects`ON `subjects`.`id` = `schedule`.`subject_id`
@@ -30,8 +30,8 @@ GROUP BY
 SELECT 
     `courses`.`id` AS `course id`,
     `courses`.`name` AS `course name`,
-    `groups`.`name`AS `group name`,
     `schedule`.`group_id` AS `group id`,
+    `groups`.`name`AS `group name`,
     `schedule`.`day_of_week` AS `the date of the class`,
     `schedule`.`class_id` AS `the time of the class`
 FROM `schedule`
