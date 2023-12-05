@@ -73,7 +73,6 @@ ORDER BY
     `salary`.`amount`;
     
 
-
 /* Select all the female lecturers who has more then 20 hours of classes per quarter and whos total salary per year is in between 1m and 4m. 
 Order them by salary and age. */
  
@@ -103,3 +102,51 @@ ORDER BY
     `Total salary per year`, 
 	  (CASE WHEN `user_metadata`.`meta_key` = 'age' THEN `user_metadata`.`meta_value` END);
 	  
+	  
+	  
+# Determine by single query weather female or male lecturers have more appearances per quarter.
+
+SELECT
+    `users`.`id`,
+    `total_appearances`,
+    (CASE WHEN `female_count` > `male_count` THEN 'Female' ELSE 'Male' END) AS `More_Appearances_Gender`
+FROM
+    `users`
+JOIN (
+    SELECT
+        `user_id`,
+        12 * COUNT(`user_id`) AS `total_appearances`
+    FROM
+        `schedule`
+    WHERE
+        `user_id` IN (SELECT `id` FROM `users` WHERE `position` = 'lecturer')
+    GROUP BY
+        `user_id`
+) AS `appearances` ON `users`.`id` = `appearances`.`user_id`
+LEFT JOIN (
+    SELECT
+        `user_id`,
+        12 * COUNT(`user_id`) AS `female_count`
+    FROM
+        `user_metadata`
+    WHERE
+        `meta_key` = 'gender' AND `meta_value` = 'Female'
+    GROUP BY
+        `user_id`
+) AS `female_counts` ON `users`.`id` = `female_counts`.`user_id`
+LEFT JOIN (
+    SELECT
+        `user_id`,
+        12 * COUNT(`user_id`) AS `male_count`
+    FROM
+        `user_metadata`
+    WHERE
+        `meta_key` = 'gender' AND `meta_value` = 'Male'
+    GROUP BY
+        `user_id`
+) AS `male_counts` ON `users`.`id` = `male_counts`.`user_id`
+WHERE
+    `users`.`position` = 'lecturer'
+ORDER BY
+    `More_Appearances_Gender`;
+
