@@ -73,6 +73,7 @@ ORDER BY
     `salary`.`amount`;
     
 
+
 /* Select all the female lecturers who has more then 20 hours of classes per quarter and whos total salary per year is in between 1m and 4m. 
 Order them by salary and age. */
  
@@ -81,7 +82,7 @@ SELECT
     `users`.`first_name` AS `First name`,
     `users`.`last_name` AS `Last name`,
     12 * `salary`.`amount` AS `Total salary per year`,
-    12 * COUNT(DISTINCT `schedule`.`class_id`) AS `Classes per quarter`
+    12 * COUNT(`schedule`.`class_id`) AS `Classes per quarter`
 FROM 
     `users`
 INNER JOIN 
@@ -101,3 +102,4 @@ HAVING
 ORDER BY 
     `Total salary per year`, 
 	  (CASE WHEN `user_metadata`.`meta_key` = 'age' THEN `user_metadata`.`meta_value` END);
+	  
