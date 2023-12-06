@@ -112,41 +112,57 @@ SELECT
     (CASE WHEN `female_count` > `male_count` THEN 'Female' ELSE 'Male' END) AS `More_Appearances_Gender`
 FROM
     `users`
-JOIN (
+INNER JOIN (
     SELECT
         `user_id`,
         12 * COUNT(`user_id`) AS `total_appearances`
-    FROM
-        `schedule`
-    WHERE
-        `user_id` IN (SELECT `id` FROM `users` WHERE `position` = 'lecturer')
-    GROUP BY
-        `user_id`
+    FROM `schedule`
+    WHERE `user_id` IN (SELECT `id` FROM `users` WHERE `position` = 'lecturer')
+    GROUP BY `user_id`
 ) AS `appearances` ON `users`.`id` = `appearances`.`user_id`
 LEFT JOIN (
     SELECT
         `user_id`,
         12 * COUNT(`user_id`) AS `female_count`
-    FROM
-        `user_metadata`
-    WHERE
-        `meta_key` = 'gender' AND `meta_value` = 'Female'
-    GROUP BY
-        `user_id`
+    FROM `user_metadata`
+    WHERE `meta_key` = 'gender' AND `meta_value` = 'Female'
+    GROUP BY `user_id`
 ) AS `female_counts` ON `users`.`id` = `female_counts`.`user_id`
 LEFT JOIN (
     SELECT
         `user_id`,
         12 * COUNT(`user_id`) AS `male_count`
-    FROM
-        `user_metadata`
-    WHERE
-        `meta_key` = 'gender' AND `meta_value` = 'Male'
-    GROUP BY
-        `user_id`
+    FROM  `user_metadata`
+    WHERE  `meta_key` = 'gender' AND `meta_value` = 'Male'
+    GROUP BY `user_id`
 ) AS `male_counts` ON `users`.`id` = `male_counts`.`user_id`
-WHERE
-    `users`.`position` = 'lecturer'
+WHERE  `users`.`position` = 'lecturer'
+
 ORDER BY
     `More_Appearances_Gender`;
+    
+    
+# Determine by single query weather female or male lecturers get more salary per month in total.
+SELECT
+    SUM(`salary`.`amount`) AS total_salary,
+    CASE WHEN SUM(CASE WHEN `user_metadata`.`meta_value` = 'female' THEN `salary`.`amount` ELSE 0 END) > 
+                   SUM(CASE WHEN `user_metadata`.`meta_value` = 'male' THEN `salary`.`amount` ELSE 0 END)
+         THEN 'female'
+         ELSE 'male'
+    END AS higher_salary_gender
+FROM
+    `users`
+INNER JOIN 
+    `user_metadata` ON `users`.`id` = `user_metadata`.`user_id`
+INNER JOIN
+    `user_salary`  ON `users`.`id` = `user_salary`.`user_id`
+INNER JOIN
+    `salary`  ON `user_salary`.`salary_id` = `salary`.`id`
+WHERE
+    `users`.`position` = 'lecturer'
+    AND `user_metadata`.`meta_value` IN ('female', 'male')
+GROUP BY
+    `user_metadata`.`meta_value`
+ORDER BY
+     higher_salary_gender DESC;
 
