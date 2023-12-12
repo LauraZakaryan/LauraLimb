@@ -1,10 +1,10 @@
-# Select all the users who's names ( f name or l name ) contains letter "a"
+# Task 1 Select all the users who's names ( f name or l name ) contains letter "a"
 SELECT `first_name`, `last_name`
 FROM `users`
 WHERE `first_name`  LIKE '%a%' OR `last_name` LIKE '%a%';
 
 
-# Select all the groups which studies "English"
+# Task 2 Select all the groups which studies "English"
 SELECT 
      `groups`.`id`, 
 	  `groups`.`name`
@@ -15,7 +15,7 @@ WHERE `subjects`.`name`='English'
 GROUP BY `groups`.`id`;
 
 
-# Select groups . Columns: group's id, group's name and student count. Each row should be like this, ex: ->12, "Xumb 1", "24"
+# Task 3 Select groups . Columns: group's id, group's name and student count. Each row should be like this, ex: ->12, "Xumb 1", "24"
 SELECT
     `groups`.`id` AS group_id,
     `groups`.`name` AS group_name,
@@ -28,7 +28,7 @@ GROUP BY
    `groups`.`id`;
    
    
-/* Select courses. Those courses which have groups which have studies that are taught by Navasardyan and the days of classes are at Monday and Friday.
+/* Task 4 Select courses. Those courses which have groups which have studies that are taught by Navasardyan and the days of classes are at Monday and Friday.
  Columns to show: Kurs id , kurs name, group name,  group id, the date of the class, and the time of the class */
 SELECT 
     `courses`.`id` AS `course id`,
@@ -49,7 +49,7 @@ GROUP BY
      `groups`.`id`;
      
      
-# Select all the lecturers who has classes more then 5 times a week, but less then 8. Order the list by their Salary.
+# Task 5 Select all the lecturers who has classes more then 5 times a week, but less then 8. Order the list by their Salary.
 SELECT 
     `users`.`id` AS `User id`,
     `users`.`first_name` AS `First name`,
@@ -73,7 +73,7 @@ ORDER BY
     `salary`.`amount`;
     
 
-/* Select all the female lecturers who has more then 20 hours of classes per quarter and whos total salary per year is in between 1m and 4m. 
+/* Task 6 Select all the female lecturers who has more then 20 hours of classes per quarter and whos total salary per year is in between 1m and 4m. 
 Order them by salary and age. */
  
 SELECT 
@@ -104,7 +104,7 @@ ORDER BY
 	  
 	  
 	  
-# Determine by single query weather female or male lecturers have more appearances per quarter.
+# Task 7 Determine by single query weather female or male lecturers have more appearances per quarter.
 
 SELECT
     `users`.`id`,
@@ -142,7 +142,7 @@ ORDER BY
     `More_Appearances_Gender`;
     
     
-# Determine by single query weather female or male lecturers get more salary per month in total.
+# Task 8 Determine by single query weather female or male lecturers get more salary per month in total.
 SELECT
     SUM(`salary`.`amount`) AS total_salary,
     CASE WHEN SUM(CASE WHEN `user_metadata`.`meta_value` = 'female' THEN `salary`.`amount` ELSE 0 END) > 
