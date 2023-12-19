@@ -40,22 +40,6 @@ CREATE TABLE `mog` (
     `name` VARCHAR(255)
 ) ENGINE = INNODB;
 
-CREATE TABLE `user_courses` (
-    `user_id` INT,
-    `course_id` INT,
-    PRIMARY KEY (`user_id`, `course_id`),
-    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
-    FOREIGN KEY (`course_id`) REFERENCES `courses`(`id`)
-) ENGINE = INNODB;
-
-CREATE TABLE `course_groups` (
-    `course_id` INT,
-    `group_id` INT,
-    PRIMARY KEY (`course_id`, `group_id`),
-    FOREIGN KEY (`course_id`) REFERENCES `courses`(`id`),
-    FOREIGN KEY (`group_id`) REFERENCES `groups`(`id`)
-) ENGINE = INNODB;
-
 CREATE TABLE `user_groups` (
     `user_id` INT,
     `group_id` INT,
@@ -98,18 +82,26 @@ CREATE TABLE `semesters` (
     `end_date` DATE
 ) ENGINE = INNODB;
 
+CREATE TABLE `course_groups` (
+    `course_id` INT,
+    `group_id` INT,
+    `semester_id` INT,
+    PRIMARY KEY (`semester_id`, `group_id`,`course_id`),
+    FOREIGN KEY (`course_id`) REFERENCES `courses`(`id`),
+    FOREIGN KEY (`group_id`) REFERENCES `groups`(`id`),
+    FOREIGN KEY (`semester_id`) REFERENCES `semesters`(`id`)
+) ENGINE = INNODB;
+
 CREATE TABLE `schedule` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `day_of_week` VARCHAR(255),
     `class_id` INT,
-    `course_id` INT,
     `group_id` INT,
     `subject_id` INT,
     `user_id` INT,
     `room_number` VARCHAR(255),
     `semester_id` INT, 
     FOREIGN KEY (`class_id`) REFERENCES `class`(`id`),
-    FOREIGN KEY (`course_id`) REFERENCES `courses`(`id`),
     FOREIGN KEY (`group_id`) REFERENCES `groups`(`id`),
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
     FOREIGN KEY (`subject_id`) REFERENCES `subjects`(`id`),
@@ -117,4 +109,5 @@ CREATE TABLE `schedule` (
     UNIQUE INDEX (`semester_id`,`day_of_week`,`class_id`,`room_number`),
     INDEX (`user_id`,`subject_id`,`group_id`)
 ) ENGINE = INNODB;
+
 

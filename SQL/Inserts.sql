@@ -37,7 +37,7 @@ VALUES
   ('lecturer', 'Sahak', 'Sahakyan', '1950-03-23', 'sahak.sahakyan@gmail.com', '094444494', 'Saryan 5'),
   ('lecturer', 'Zohrab', 'Hovhannisyan', '1949-06-27', 'zohrab.hovhannisyan@gmail.com', '055253525', 'Zoravar Andranik 14'),
   ('lecturer', 'Armen', 'Andreasyan', '1955-09-16', 'armen.andreasyan@gmail.com', '093435363', 'Abovyan 3'),
-  ('lecturer', 'Zaven', 'Nazaryan', '1945-07-09', 'zaven.nazaryan@gmail.com', '093332333', 'Nar-Dos 24'),
+  ('lecturer', 'Zaven', 'Nazaryan', '1958-07-09', 'zaven.nazaryan@gmail.com', '093332333', 'Nar-Dos 24'),
   ('lecturer', 'Varujan', 'Gabrielyan', '1980-04-14', 'varuj.gabrielyan@gmail.com', '094244454', 'Nar-Dos 20'),
   ('student', 'Siranush', 'Petrosyan', '2003-06-14', 'siranush.petrosyan@gmail.com', '055654585', 'Masiv 1'),
   ('student', 'Juli', 'Gevorkyan', '2003-11-03', 'juli.gevorkyan@gmail.com', '093638457', 'Masiv 2'),
@@ -96,7 +96,16 @@ VALUES
 	(14, 7, 'age', '70'),
 	(15, 21, 'age', '64'),
 	(16, 30, 'age', '33'),
-	(17, 75, 'age', '34');	
+	(17, 75, 'age', '34'),
+	(1, 3, 'age', '58'),
+	(2, 4, 'age', '45'),
+	(4, 12, 'age', '37'),
+	(7, 33, 'age', '73'),
+	(8, 34, 'age', '73'),
+	(9, 35, 'age', '74'),
+	(10, 36, 'age', '68'),
+	(11, 37, 'age', '65'),
+	(12, 38, 'age', '43');
 
 # Inserting data into the `courses` table
 INSERT INTO `courses` (`id`,`name`)
@@ -114,7 +123,8 @@ VALUES
    (3, 'group 201'),
    (4, 'group 202'),
    (5, 'group 301'),
-   (6, 'group 401');
+   (6, 'group 401'),
+	(7, 'group 001');
    
 # Inserting data into the `salary` table
 INSERT INTO `salary` (`id`, `amount`)
@@ -229,84 +239,37 @@ VALUES
 INSERT INTO `semesters` (`name`, `start_date`, `end_date`)
 VALUES 
    ('first semester', '2023-09-01', '2024-01-31'),
-   ('second semester', '2024-02-05', '2024-06-30');
+   ('second semester', '2024-02-05', '2024-06-30'),
+	('first semester', '2024-09-01', '2025-01-31'),
+   ('second semester', '2025-02-05', '2026-06-30');
 
-# Inserting data into the `user_courses` table
-INSERT INTO `user_courses`(`user_id`, `course_id`)
-VALUES 
-     #students	
-    (1,1),
-    (2,1),
-    (5,1),
-    (6,1),
-    (9,1),
-    (10,1),
-    (11,2),
-    (13,2),
-    (14,2),
-    (15,2),
-    (16,2),
-    (17,2),
-    (18,3),
-    (19,3),
-    (20,3),
-    (22,3),
-    (23,3),
-    (24,3),
-    (25,3),
-    (26,4),
-    (27,4),
-    (28,4),
-    (29,4),
-    (31,4),
-    (32,4),
-    (39,1),
-  	(40,1),
-	(41,1),
-	(42,1),
-	(43,1),
-	(44,1),
-	(45,1),
-	(46,1),
-	(47,2),
-	(48,2),
-	(49,2),
-	(50,2),
-	(51,2),
-	(52,2),
-	(53,2),
-	(54,2),
-	(55,2),
-	(56,2),
-	(57,3),
-	(58,3),
-	(59,3),
-	(60,3),
-	(61,3),
-	(62,3),
-	(63,3),
-	(64,3),
-	(65,4),
-	(66,4),
-	(67,4),
-	(68,4),
-	(69,4),
-	(70,4),
-	(71,4),
-	(72,4),
-	(73,4),
-	(74,4);
-	
 # Inserting data into the `course_groups` table
-INSERT INTO `course_groups`(`course_id`, `group_id`)
+INSERT INTO `course_groups`(`semester_id`, `group_id`, `course_id`)
 VALUES 
-    (1, 1),
-    (1, 2),
-    (2, 3),
-    (2, 4),
-    (3, 5),
-    (4, 6);
-
+    (1, 1, 1),
+    (2, 1, 1),
+    (1, 2, 1),
+    (2, 2, 1),
+    (1, 3, 2),
+    (2, 3, 2),
+    (1, 4, 2),
+    (2, 4, 2),
+    (1, 5, 3),
+    (2, 5, 3),
+    (1, 6, 4),
+	 (2, 6, 4),
+	 (3, 7, 1),
+	 (4, 7, 1),
+	 (3, 1, 2),
+    (4, 1, 2),
+    (3, 2, 2),
+    (4, 2, 2),
+    (3, 3, 3),
+    (4, 3, 3),
+    (3, 4, 3),
+    (4, 4, 3),
+    (3, 5, 4),
+    (4, 5, 4);
 # Inserting data into the `user_groups` table
 INSERT INTO `user_groups`(`user_id`, `group_id`)
 VALUES 
@@ -337,41 +300,41 @@ VALUES
     (31,6),
     (32,6),
 	 (39,1),
-  	(40,1),
-	(41,1),
-	(42,1),
-	(43,2),
-	(44,2),
-	(45,2),
-	(46,2),
-	(47,3),
-	(48,3),
-	(49,3),
-	(50,3),
-	(51,3),
-	(52,4),
-	(53,4),
-	(54,4),
-	(55,4),
-	(56,4),
-	(57,5),
-	(58,5),
-	(59,5),
-	(60,5),
-	(61,5),
-	(62,5),
-	(63,5),
-	(64,5),
-	(65,6),
-	(66,6),
-	(67,6),
-	(68,6),
-	(69,6),
-	(70,6),
-	(71,6),
-	(72,6),
-	(73,6),
-	(74,6);
+  	 (40,1),
+	 (41,1),
+	 (42,1),
+	 (43,2),
+	 (44,2),
+	 (45,2),
+	 (46,2),
+	 (47,3),
+	 (48,3),
+	 (49,3),
+	 (50,3),
+	 (51,3),
+	 (52,4),
+	 (53,4),
+	 (54,4),
+	 (55,4),
+	 (56,4),
+	 (57,5),
+	 (58,5),
+	 (59,5),
+	 (60,5),
+	 (61,5),
+	 (62,5),
+	 (63,5),
+	 (64,5),
+	 (65,6),
+	 (66,6),
+	 (67,6),
+	 (68,6),
+	 (69,6),
+	 (70,6),
+	 (71,7),
+	 (72,7),
+	 (73,7),
+	 (74,7);
     
 	
 # Inserting data into the `user_salary` table
@@ -421,49 +384,48 @@ VALUES
     (31,25),
     (32,20),
     (39,26),
-	(40,27),
-	(41,28),
-	(42,29),
-	(43,30),
-	(44,31),
-	(45,32),
-	(46,33),
-	(47,34),
-	(48,35),
-	(49,36),
-	(50,37),
-	(51,38),
-	(52,39),
-	(53,40),
-	(54,41),
-	(55,42),
-	(56,43),
-	(57,44),
-	(58,45),
-	(59,46),
-	(60,47),
-	(61,48),
-	(62,49),
-	(63,50),
-	(64,51),
-	(65,52),
-	(66,53),
-	(67,54),
-	(68,55),
-	(69,56),
-	(70,57),
-	(71,58),
-	(72,59),
-	(73,60),
-	(74,61);
+	 (40,27),
+	 (41,28),
+	 (42,29),
+	 (43,30),
+	 (44,31),
+	 (45,32),
+	 (46,33),
+	 (47,34),
+	 (48,35),
+	 (49,36),
+	 (50,37),
+	 (51,38),
+	 (52,39),
+	 (53,40),
+	 (54,41),
+	 (55,42),
+	 (56,43),
+	 (57,44),
+	 (58,45),
+	 (59,46),
+	 (60,47),
+	 (61,48),
+	 (62,49),
+	 (63,50),
+	 (64,51),
+	 (65,52),
+	 (66,53),
+	 (67,54),
+	 (68,55),
+	 (69,56),
+	 (70,57),
+	 (71,58),
+	 (72,59),
+	 (73,60),
+	 (74,61);
    
 	
 # Inserting data into the `schedule` table
-# Schedule for the first semester, group 101
+# Schedule for the first semester, group 101   ('2023-09-01', '2024-01-31')
 INSERT INTO `schedule` (
     `day_of_week`,
     `class_id`,
-    `course_id`,
     `group_id`,
     `subject_id`,
     `user_id`,
@@ -471,23 +433,22 @@ INSERT INTO `schedule` (
     `semester_id`
 )
 VALUES
-    ('Monday', 1, 1, 1, 1, 3, 'Room 101', 1),
-    ('Monday', 2, 1, 1, 2, 4, 'Room 108', 1),
-    ('Monday', 3, 1, 1, 22, 75, 'Room 214', 1),
-    ('Tuesday', 2, 1, 1, 15, 38, 'Room 106', 1),
-    ('Tuesday', 3, 1, 1, 1, 3, 'Room 101', 1),
-    ('Wednesday', 1, 1, 1, 3, 36, 'Room 216', 1),
-    ('Wednesday', 2, 1, 1, 2, 4 , 'Room 204', 1),
-    ('Thursday', 3, 1, 1, 15, 38, 'Room 108', 1),
-    ('Thursday', 4, 1, 1, 2, 4, 'Room 204', 1),
-    ('Friday', 1, 1, 1, 1, 3, 'Room 114', 1),
-	 ('Friday', 2, 1, 1, 3, 36, 'Room 216', 1);
+    ('Monday', 1, 1, 1, 3, 'Room 101', 1),
+    ('Monday', 2, 1, 2, 4, 'Room 108', 1),
+    ('Monday', 3, 1, 22, 75, 'Room 214', 1),
+    ('Tuesday', 2, 1, 15, 38, 'Room 106', 1),
+    ('Tuesday', 3, 1, 1, 3, 'Room 101', 1),
+    ('Wednesday', 1, 1, 3, 36, 'Room 216', 1),
+    ('Wednesday', 2, 1, 2, 4 , 'Room 204', 1),
+    ('Thursday', 3, 1, 15, 38, 'Room 108', 1),
+    ('Thursday', 4, 1, 2, 4, 'Room 204', 1),
+    ('Friday', 1, 1, 1, 3, 'Room 114', 1),
+	 ('Friday', 2, 1, 3, 36, 'Room 216', 1);
 
-# Schedule for the first semester, group 102
+# Schedule for the first semester, group 102  ('2023-09-01', '2024-01-31')
 INSERT INTO `schedule` (
     `day_of_week`,
     `class_id`,
-    `course_id`,
     `group_id`,
     `subject_id`,
     `user_id`,
@@ -495,24 +456,23 @@ INSERT INTO `schedule` (
     `semester_id`
 )
 VALUES
-    ('Monday', 1, 1, 2, 2, 12, 'Room 106', 1),
-    ('Monday', 2, 1, 2, 1, 35, 'Room 101', 1),
-    ('Tuesday', 1, 1, 2, 15, 38, 'Room 106', 1),
-    ('Tuesday', 2, 1, 2, 2, 12, 'Room 104', 1),
-    ('Wednesday', 2, 1, 2, 1, 35, 'Room 108', 1),
-    ('Wednesday', 3, 1, 2, 3, 36, 'Room 216', 1),
-    ('Thursday', 1, 1, 2, 3, 36, 'Room 219', 1),
-    ('Thursday', 2, 1, 2, 1, 35, 'Room 101', 1),
-    ('Friday', 1, 1, 2, 15, 38, 'Room 108', 1),
-	 ('Friday', 2, 1, 2, 2, 12, 'Room 104', 1),
-	 ('Friday', 3, 1, 2, 22, 75, 'Room 214', 1),
-	 ('Friday', 4, 1, 2, 22, 75, 'Room 214', 1);
+    ('Monday', 1, 2, 2, 12, 'Room 106', 1),
+    ('Monday', 2, 2, 1, 35, 'Room 101', 1),
+    ('Tuesday', 1, 2, 15, 38, 'Room 206', 1),
+    ('Tuesday', 2, 2, 2, 12, 'Room 104', 1),
+    ('Wednesday', 2, 2, 1, 35, 'Room 108', 1),
+    ('Wednesday', 3, 2, 3, 36, 'Room 216', 1),
+    ('Thursday', 1, 2, 3, 36, 'Room 219', 1),
+    ('Thursday', 2, 2, 1, 35, 'Room 101', 1),
+    ('Friday', 1, 2, 15, 38, 'Room 108', 1),
+	 ('Friday', 2, 2, 2, 12, 'Room 104', 1),
+	 ('Friday', 3, 2, 22, 75, 'Room 214', 1),
+	 ('Friday', 4, 2, 22, 75, 'Room 214', 1);
 
-# Schedule for the first semester, group 201
+# Schedule for the first semester, group 201  ('2023-09-01', '2024-01-31')
 INSERT INTO `schedule` (
     `day_of_week`,
     `class_id`,
-    `course_id`,
     `group_id`,
     `subject_id`,
     `user_id`,
@@ -520,25 +480,24 @@ INSERT INTO `schedule` (
     `semester_id`
 )
 VALUES
-    ('Monday', 1, 2, 3, 14, 33, 'Room 206', 1),
-    ('Monday', 2, 2, 3, 13, 37, 'Room 220', 1),
-    ('Monday', 3, 2, 3, 5, 7, 'Room 219', 1),
-    ('Tuesday', 1, 2, 3, 16, 21, 'Room 214', 1),
-    ('Tuesday', 2, 2, 3, 4, 7, 'Room 318', 1),
-    ('Tuesday', 3, 2, 3, 7, 38, 'Room 104', 1),
-    ('Tuesday', 4, 2, 3, 22, 75, 'Room 106', 1),
-    ('Wednesday', 2, 2, 3, 14, 33, 'Room 101', 1),
-    ('Wednesday', 3, 2, 3, 10, 4, 'Room 115', 1),
-    ('Thursday', 1, 2, 3, 13, 37, 'Room 220', 1),
-    ('Thursday', 2, 2, 3, 11, 4, 'Room 115', 1),
-    ('Friday', 1, 2, 3, 4, 7, 'Room 219', 1),
-	 ('Friday', 2, 2, 3, 7, 38, 'Room 214', 1);
+    ('Monday', 1, 3, 14, 33, 'Room 206', 1),
+    ('Monday', 2, 3, 13, 37, 'Room 220', 1),
+    ('Monday', 3, 3, 5, 7, 'Room 219', 1),
+    ('Tuesday', 1, 3, 16, 21, 'Room 214', 1),
+    ('Tuesday', 2, 3, 4, 7, 'Room 318', 1),
+    ('Tuesday', 3, 3, 7, 38, 'Room 104', 1),
+    ('Tuesday', 4, 3, 22, 75, 'Room 106', 1),
+    ('Wednesday', 2, 3, 14, 33, 'Room 101', 1),
+    ('Wednesday', 3, 3, 10, 4, 'Room 115', 1),
+    ('Thursday', 1, 3, 13, 37, 'Room 220', 1),
+    ('Thursday', 2, 3, 11, 4, 'Room 115', 1),
+    ('Friday', 1, 3, 4, 7, 'Room 219', 1),
+	 ('Friday', 2, 3, 7, 38, 'Room 214', 1);
 
-# Schedule for the first semester, group 202
+# Schedule for the first semester, group 202  ('2023-09-01', '2024-01-31')
 INSERT INTO `schedule` (
-   `day_of_week`,
+    `day_of_week`,
     `class_id`,
-    `course_id`,
     `group_id`,
     `subject_id`,
     `user_id`,
@@ -546,25 +505,24 @@ INSERT INTO `schedule` (
     `semester_id`
 )
 VALUES
-    ('Monday', 1, 2, 4, 7, 38, 'Room 207', 1),
-    ('Monday', 2, 2, 4, 14, 33, 'Room 215', 1),
-    ('Tuesday', 1, 2, 4, 10, 12, 'Room 115', 1),
-    ('Tuesday', 2, 2, 4, 16, 21, 'Room 214', 1),
-    ('Tuesday', 3, 2, 4, 13, 37, 'Room 220', 1),
-    ('Wednesday', 1, 2, 4, 7, 38, 'Room 101', 1),
-    ('Wednesday', 2, 2, 4, 11, 12, 'Room 206', 1),
-    ('Wednesday', 3, 2, 4, 22, 75, 'Room 208', 1),
-    ('Thursday', 1, 2, 4, 14, 33, 'Room 106', 1),
-    ('Thursday', 2, 2, 4, 4, 36, 'Room 216', 1),
-    ('Thursday', 3, 2, 4, 10, 12, 'Room 114', 1),
-    ('Friday', 1, 2, 4, 13, 37, 'Room 220', 1),
-	 ('Friday', 2, 2, 4, 5, 7, 'Room 220', 1);
+    ('Monday', 1, 4, 7, 38, 'Room 207', 1),
+    ('Monday', 2, 4, 14, 33, 'Room 215', 1),
+    ('Tuesday', 1, 4, 10, 12, 'Room 115', 1),
+    ('Tuesday', 2, 4, 16, 21, 'Room 214', 1),
+    ('Tuesday', 3, 4, 13, 37, 'Room 220', 1),
+    ('Wednesday', 1, 4, 7, 38, 'Room 101', 1),
+    ('Wednesday', 2, 4, 11, 12, 'Room 206', 1),
+    ('Wednesday', 3, 4, 22, 75, 'Room 208', 1),
+    ('Thursday', 1, 4, 14, 33, 'Room 106', 1),
+    ('Thursday', 2, 4, 4, 36, 'Room 216', 1),
+    ('Thursday', 3, 4, 10, 12, 'Room 114', 1),
+    ('Friday', 1, 4, 13, 37, 'Room 220', 1),
+	 ('Friday', 2, 4, 5, 7, 'Room 220', 1);
     
-# Schedule for the first semester, group 301
+# Schedule for the first semester, group 301  ('2023-09-01', '2024-01-31')
 INSERT INTO `schedule` (
     `day_of_week`,
     `class_id`,
-    `course_id`,
     `group_id`,
     `subject_id`,
     `user_id`,
@@ -572,23 +530,22 @@ INSERT INTO `schedule` (
     `semester_id`
 )
 VALUES
-    ('Monday', 1, 3, 5, 18, 35, 'Room 107', 1),
-    ('Monday', 2, 3, 5, 6, 34, 'Room 205', 1),
-    ('Tuesday', 1, 3, 5, 17, 3, 'Room 101', 1),
-    ('Tuesday', 2, 3, 5, 12, 21, 'Room 119', 1),
-    ('Wednesday', 1, 3, 5, 8, 37, 'Room 220', 1),
-    ('Wednesday', 2, 3, 5, 18, 35, 'Room 114', 1),
-    ('Thursday', 1, 3, 5, 6, 34, 'Room 101', 1),
-    ('Thursday', 2, 3, 5, 9, 37, 'Room 220', 1),
-    ('Thursday', 3, 3, 5, 17, 3, 'Room 104', 1),
-    ('Friday', 1, 3, 5, 12, 21, 'Room 216', 1),
-	 ('Friday', 2, 3, 5, 17, 3, 'Room 209', 1);
+    ('Monday', 1, 5, 18, 35, 'Room 107', 1),
+    ('Monday', 2, 5, 6, 34, 'Room 205', 1),
+    ('Tuesday', 1, 5, 17, 3, 'Room 101', 1),
+    ('Tuesday', 2, 5, 12, 21, 'Room 119', 1),
+    ('Wednesday', 1, 5, 8, 37, 'Room 220', 1),
+    ('Wednesday', 2, 5, 18, 35, 'Room 114', 1),
+    ('Thursday', 1, 5, 6, 34, 'Room 101', 1),
+    ('Thursday', 2, 5, 9, 37, 'Room 220', 1),
+    ('Thursday', 3, 5, 17, 3, 'Room 104', 1),
+    ('Friday', 1, 5, 12, 21, 'Room 216', 1),
+	 ('Friday', 2, 5, 17, 3, 'Room 209', 1);
 
-# Schedule for the first semester, group 401
+# Schedule for the first semester, group 401  ('2023-09-01', '2024-01-31')
 INSERT INTO `schedule` (
     `day_of_week`,
     `class_id`,
-    `course_id`,
     `group_id`,
     `subject_id`,
     `user_id`,
@@ -596,8 +553,394 @@ INSERT INTO `schedule` (
     `semester_id`
 )
 VALUES
-    ('Monday', 1, 4, 6, 19, 4, 'Room 115', 1),
-    ('Wednesday', 2, 4, 6, 20, 30, 'Room 104', 1),
-    ('Friday', 1, 4, 6, 21, 36, 'Room 318', 1),
-	 ('Friday', 2, 4, 6, 19, 4, 'Room 114', 1);
+    ('Monday', 1, 6, 19, 4, 'Room 115', 1),
+    ('Wednesday', 2, 6, 20, 30, 'Room 104', 1),
+    ('Friday', 1, 6, 21, 36, 'Room 318', 1),
+	 ('Friday', 2, 6, 19, 4, 'Room 114', 1);
 	 
+	 
+# Schedule for the second semester, group 101 ('2024-02-05', '2024-06-30')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES
+    ('Monday', 1, 1, 3, 36, 'Room 101',2),
+    ('Monday', 2, 1, 1, 3, 'Room 108', 2),
+    ('Monday', 3, 1, 22, 75, 'Room 214', 2),
+    ('Tuesday', 1, 1, 2, 4, 'Room 106', 2),
+    ('Tuesday', 2, 1, 1, 3, 'Room 101', 2),
+    ('Wednesday', 1, 1, 15, 38, 'Room 216', 2),
+    ('Wednesday', 2, 1, 2, 4 , 'Room 204', 2),
+    ('Thursday', 2, 1, 3, 36, 'Room 108', 2),
+    ('Thursday', 3, 1, 2, 4, 'Room 204', 2),
+    ('Friday', 1, 1, 1, 3, 'Room 114', 2),
+	 ('Friday', 2, 1, 15, 38, 'Room 216', 2);
+	 
+# Schedule for the second semester, group 102  ('2024-02-05', '2024-06-30')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES
+    ('Monday', 1, 2, 15, 38, 'Room 106', 2),
+    ('Monday', 2, 2, 1, 35, 'Room 101', 2),
+    ('Tuesday', 1, 2, 22, 75, 'Room 113', 2),
+    ('Tuesday', 2, 2, 3, 36, 'Room 104', 2),
+    ('Tuesday', 3, 2, 1, 35, 'Room 315', 2),
+    ('Wednesday', 1, 2, 2, 12, 'Room 108', 2),
+    ('Wednesday', 2, 2, 1, 35, 'Room 216', 2),
+    ('Thursday', 1, 2, 15, 38, 'Room 219', 2),
+    ('Thursday', 2, 2, 2, 12, 'Room 101', 2),
+    ('Friday', 2, 2, 2, 12, 'Room 108', 2),
+	 ('Friday', 3, 2, 3, 35, 'Room 104', 2);
+
+# Schedule for the second semester, group 201  ('2024-02-05', '2024-06-30')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES
+    ('Monday', 1, 3, 5, 7, 'Room 206', 2),
+    ('Monday', 2, 3, 7, 38, 'Room 220', 2),
+    ('Monday', 3, 3, 11, 4, 'Room 219', 2),
+    ('Tuesday', 1, 3, 14, 33, 'Room 214', 2),
+    ('Tuesday', 2, 3, 16, 21, 'Room 318', 2),
+    ('Tuesday', 3, 3, 4, 7, 'Room 104', 2),
+    ('Wednesday', 1, 3, 22, 75, 'Room 101', 2),
+    ('Wednesday', 2, 3, 13, 37, 'Room 115', 2),
+    ('Wednesday', 3, 3, 7, 38, 'Room 111', 2),
+    ('Thursday', 1, 3, 13, 37, 'Room 220', 2),
+    ('Thursday', 2, 3, 14, 33, 'Room 115', 2),
+    ('Friday', 1, 3, 10, 4, 'Room 219', 2),
+	 ('Friday', 2, 3, 4, 7, 'Room 214', 2);
+
+# Schedule for the second semester, group 202  ('2024-02-05', '2024-06-30')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES
+    ('Monday', 1, 4, 16, 21, 'Room 207', 2),
+    ('Monday', 2, 4, 5, 7, 'Room 215', 2),
+    ('Monday', 3, 4, 14, 33, 'Room 111', 2),
+    ('Tuesday', 1, 4, 7, 38, 'Room 115', 2),
+    ('Tuesday', 2, 4, 22, 75, 'Room 214', 2),
+    ('Wednesday', 1, 4, 10, 12, 'Room 205', 2),
+    ('Wednesday', 2, 4, 14, 33, 'Room 206', 2),
+    ('Wednesday', 3, 4, 13, 37, 'Room 208', 2),
+    ('Thursday', 1, 4, 4, 36, 'Room 106', 2),
+    ('Thursday', 2, 4, 13, 37, 'Room 216', 2),
+    ('Friday', 1, 4, 4, 36, 'Room 220', 2),
+	 ('Friday', 2, 4, 11, 12, 'Room 220', 2),
+	 ('Friday', 3, 4, 7, 38, 'Room 106', 2);
+	 
+# Schedule for the second semester, group 301   ('2024-02-05', '2024-06-30')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES
+    ('Monday', 1, 5, 6, 34, 'Room 107', 2),
+    ('Monday', 2, 5, 17, 3, 'Room 205', 2),
+    ('Tuesday', 1, 5, 8, 37, 'Room 101', 2),
+    ('Tuesday', 2, 5, 18, 35, 'Room 119', 2),
+    ('Wednesday', 1, 5, 12, 21, 'Room 220', 2),
+    ('Wednesday', 2, 5, 17, 3, 'Room 114', 2),
+    ('Wednesday', 3, 5, 9, 37, 'Room 104', 2),
+    ('Thursday', 1, 5, 6, 34, 'Room 101', 2),
+    ('Thursday', 2, 5, 18, 35, 'Room 220', 2),
+    ('Friday', 1, 5, 18, 35, 'Room 216', 2),
+	 ('Friday', 2, 5, 9, 37, 'Room 209', 2);
+	 
+	 
+# Schedule for the first semester, group 001  ('2024-09-01', '2025-01-31')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES 
+    ('Monday', 1, 7, 22, 75, 'Room 101', 3),
+    ('Monday', 2, 7, 1, 3, 'Room 106', 3),
+    ('Monday', 3, 7, 2, 4, 'Room 115', 3),
+    ('Tuesday', 1, 7, 3, 36, 'Room 205', 3),
+    ('Tuesday', 2, 7, 15, 38, 'Room 207', 3),
+    ('Wednesday', 2, 7, 2, 4, 'Room115', 3),
+    ('Wednesday', 3, 7, 15, 38, 'Room 207', 3),
+    ('Thursday', 1, 7, 1, 3, 'Room 106', 3),
+    ('Thursday', 2, 7, 3, 36, 'Room 205', 3),
+    ('Friday', 1, 7, 15, 38, 'Room 207', 3),
+    ('Friday', 2, 7, 1, 3, 'Room 106', 3);
+    
+    
+# Schedule for the first semester, group 101  ('2024-09-01', '2025-01-31')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES 
+    ('Monday', 1, 1, 4, 36,'Room 216', 3),
+    ('Monday', 2, 1, 14, 33, 'Room 101', 3),
+    ('Monday', 3, 1, 16, 21, 'Room 215', 3),
+    ('Tuesday', 1, 1, 13, 37, 'Room 220', 3),
+    ('Tuesday', 2, 1, 7, 38, 'Room 205', 3),
+    ('Tuesday', 3, 1, 10, 4, 'Room 115', 3),
+    ('Wednesday', 2, 1, 4, 36, 'Room 216', 3),
+    ('Wednesday', 3, 1, 14, 33, 'Room 101', 3),
+    ('Thursday', 1, 1, 5, 7, 'Room 204', 3),
+    ('Thursday', 2, 1, 13, 37, 'Room 220', 3),
+    ('Friday', 1, 1, 11, 4, 'Room 114', 3),
+    ('Friday', 2, 1, 22, 75, 'Room 208', 3),
+    ('Friday', 3, 1, 7, 38, 'Room 106', 3);
+    
+    
+# Schedule for the first semester, group 102  ('2024-09-01', '2025-01-31')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES 
+    ('Monday', 1, 2, 10, 12, 'Room 214', 3),
+    ('Monday', 2, 2, 22, 75, 'Room 208', 3),
+    ('Monday', 3, 2, 7, 38, 'Room 107', 3),
+    ('Tuesday', 1, 2, 14, 33, 'Room 101', 3),
+    ('Tuesday', 2, 2, 5, 7, 'Room 204', 3),
+    ('Wednesday', 1, 2, 7, 38, 'Room 209', 3),
+    ('Wednesday', 2, 2, 11, 12, 'Room 206', 3),
+    ('Wednesday', 3, 2, 4, 7, 'Room 204', 3),
+    ('Thursday', 1, 2, 13, 21, 'Room 220', 3),
+    ('Thursday', 2, 2, 16, 21, 'Room 214', 3),
+    ('Thursday', 3, 2, 4, 7, 'Room 216', 3),
+    ('Friday', 1, 2, 13, 21, 'Room 318', 3),
+    ('Friday', 2, 2, 14, 33, 'Room 101',3);
+    
+    
+# Schedule for the first semester, group 201  ('2024-09-01', '2025-01-31')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES 
+    ('Monday', 1, 3, 12, 21, 'Room 219', 3),
+    ('Monday', 2, 3, 18, 35, 'Room 104', 3),
+    ('Tuesday', 1, 3, 17, 3, 'Room 214', 3),
+    ('Tuesday', 2, 3, 6, 34, 'Room 315', 3),
+    ('Tuesday', 3, 3, 9, 37, 'Room 220', 3),
+    ('Wednesday', 1, 3, 8, 37, 'Room 220', 3),
+    ('Wednesday', 2, 3, 18, 35, 'Room 111', 3),
+    ('Thursday', 1, 3, 6, 34, 'Room 113', 3),
+    ('Thursday', 2, 3, 17, 3, 'Room 114', 3),
+    ('Friday', 1, 3, 9, 37, 'Room 220', 3),
+    ('Friday', 2, 3, 18, 35, 'Room 115',3);
+    
+    
+# Schedule for the first semester, group 202  ('2024-09-01', '2025-01-31')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES 
+    ('Monday', 1, 4, 18, 35, 'Room 204', 3),
+    ('Monday', 2, 4, 9, 37, 'Room 220', 3),
+    ('Tuesday', 1, 4, 6, 34, 'Room 315', 3),
+    ('Tuesday', 3, 4, 17, 3, 'Room 101', 3),
+    ('Wednesday', 2, 4, 12, 21, 'Room 219',3),
+    ('Wednesday', 3, 4, 18, 35, 'Room 306', 3),
+    ('Thursday', 1, 4, 18, 35, 'Room 315', 3),
+    ('Thursday', 2, 4, 6, 34, 'Room 112', 3),
+    ('Thursday', 3, 4, 9, 37, 'Room 220', 3),
+    ('Friday', 1, 4, 17, 3, 'Room 209', 3),
+    ('Friday', 1, 4, 6, 34, 'Room 306', 3);
+    
+
+# Schedule for the first semester, group 301  ('2024-09-01', '2025-01-31')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES
+    ('Tuesday', 1, 5, 19, 4, 'Room 310', 3),
+    ('Wednesday', 3, 5, 20, 30, 'Room 310', 3),
+    ('Wednesday', 4, 5, 21, 7, 'Room 318', 3),
+    ('Thursday', 1, 5, 19, 4, 'Room 310', 3);
+
+
+# Schedule for the second semester, group 001  ('2025-02-05', '2026-06-30')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES 
+    ('Monday', 1, 7, 15, 38, 'Room 208', 4),
+    ('Monday', 2, 7, 3, 36, 'Room 216', 4),
+    ('Tuesday', 1, 7, 1, 3, 'Room 114', 4),
+    ('Tuesday', 2, 7, 2, 12, 'Room 213', 4),
+    ('Wednesday', 1, 7, 3, 36, 'Room 216', 4),
+    ('Wednesday', 2, 7, 1, 3, 'Room 114', 4),
+    ('Thursday', 1, 7, 2, 12, 'Room 208', 4),
+    ('Thursday', 2, 7, 1, 3, 'Room 101', 4),
+    ('Thursday', 3, 7, 22, 75, 'Room 207', 4),
+    ('Friday', 1, 7, 15, 38, 'Room 208', 4),
+    ('Friday', 2, 7, 2, 12, 'Room 213', 4);
+    
+    
+# Schedule for the second semester, group 101  ('2025-02-05', '2026-06-30')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES
+    ('Monday', 1, 1, 16, 21, 'Room 214', 4),
+    ('Monday', 2, 1, 14, 33, 'Room 106', 4),
+    ('Tuesday', 1, 1, 5, 7, 'Room 204', 4),
+    ('Tuesday', 2, 1, 7, 38, 'Room 208', 4),
+    ('Tuesday', 3, 1, 11, 4, 'Room 115', 4),
+    ('Wednesday', 1, 1, 10, 4, 'Room 108', 4),
+    ('Wednesday', 2, 1, 14, 33, 'Room 106', 4),
+    ('Thursday', 1, 1, 13, 37, 'Room 220', 4),
+    ('Thursday', 2, 1, 7, 38, 'Room 208', 4),
+    ('Thursday', 3, 1, 4, 36, 'Room 216', 4),
+    ('Friday', 1, 1, 4, 36, 'Room 216', 4),
+    ('Friday', 2, 1, 22, 75, 'Room 208', 4),
+    ('Friday', 3, 1, 13, 37, 'Room 220', 4);
+    
+    
+# Schedule for the second semester, group 102  ('2025-02-05', '2026-06-30')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES 
+    ('Monday', 1, 2, 14, 33, 'Room 106', 4),
+    ('Monday', 2, 2, 5, 7, 'Room 204', 4),
+    ('Monday', 3, 2, 22, 75, 'Room 209', 4),
+    ('Tuesday', 1, 2, 13, 37, 'Room 220', 4),
+    ('Tuesday', 2, 2, 11, 12, 'Room 112', 4),
+    ('Tuesday', 3, 2, 10, 12, 'Room 111', 4),
+    ('Wednesday', 1, 2, 14, 33, 'Room 106', 4),
+    ('Wednesday', 2, 2, 4, 7, 'Room 318', 4),
+    ('Wednesday', 3, 2, 7, 38, 'Room 114', 4),
+    ('Thursday', 1, 2, 16, 21, 'Room 112', 4),
+    ('Thursday', 2, 2, 13, 37, 'Room 220', 4),
+    ('Thursday', 3, 2, 7, 38, 'Room 208', 4),
+    ('Friday', 1, 2, 22, 75, 'Room 209', 4),
+    ('Friday', 2, 2, 4, 7, 'Room 216', 4);
+    
+    
+# Schedule for the second semester, group 201  ('2025-02-05', '2026-06-30')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES
+    ('Monday', 1, 3, 9, 37, 'Room 220', 4),
+    ('Monday', 2, 3, 18, 35, 'Room 104', 4),
+    ('Monday', 3, 3, 6, 34, 'Room 306', 4),
+    ('Tuesday', 1, 3, 18, 35, 'Room 101', 4),
+    ('Tuesday', 2, 3, 12, 21, 'Room 212', 4),
+    ('Wednesday', 1, 3, 18, 35, 'Room 113', 4),
+    ('Wednesday', 2, 3, 9, 37, 'Room 220', 4),
+    ('Thursday', 1, 3, 6, 34, 'Room 306', 4),
+    ('Thursday', 2, 3, 17, 3, 'Room 315', 4),
+    ('Friday', 3, 3, 17, 3, 'Room 315', 4),
+    ('Friday', 4, 3, 8, 37, 'Room 220', 4);
+
+
+# Schedule for the second semester, group 202  ('2025-02-05', '2026-06-30')
+INSERT INTO `schedule` (
+    `day_of_week`,
+    `class_id`,
+    `group_id`,
+    `subject_id`,
+    `user_id`,
+    `room_number`,
+    `semester_id`
+)
+VALUES
+    ('Monday', 1, 4, 18, 35, 'Room 101', 4),
+    ('Monday', 2, 4, 6, 34, 'Room 310', 4),
+    ('Monday', 3, 4, 9, 37, 'Room 211', 4),
+    ('Tuesday', 2, 4, 18, 35, 'Room 107', 4),
+    ('Tuesday', 3, 4, 18,35, 'Room 107', 4),
+    ('Wednesday', 1, 4, 17, 3, 'Room 310', 4),
+    ('Wednesday', 2, 4, 6, 34, 'Room 204', 4),
+    ('Thursday', 1, 4, 17, 3, 'Room 111', 4),
+    ('Thursday', 2, 4, 12, 21, 'Room 219', 4),
+    ('Friday', 1, 4, 8, 37, 'Room 220', 4),
+    ('Friday', 2, 4, 9, 37, 'Room 220', 4);
+
